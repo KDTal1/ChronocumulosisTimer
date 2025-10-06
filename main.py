@@ -44,7 +44,7 @@ def complete_task(tasks_listbox, timer_label):
     
     commands._write_tasks(tasks)
     populate_tasks_listbox(tasks_listbox)
-    update_timer_label(timer_label)
+    commands.update_timer_label(timer_label)
     
     messagebox.showinfo('Complete Task', f"Marked {num_completed} task(s) as complete. +{time_added_minutes} minute(s) to timer")
 
@@ -64,13 +64,13 @@ def clear_tasks(tasks_listbox):
 def run_countdown(seconds_left, timer_label, buttons, app):
     global timer_seconds, countdown_job
     
-    time_str = format_time(seconds_left)
+    time_str = commands.format_time(seconds_left)
     timer_label.config(text=f'Time left: {time_str}') 
     
     if seconds_left <= 0:
         messagebox.showinfo('Timer', 'Timer finished. Returning to menu.')
         timer_seconds = 0
-        update_timer_label(timer_label)
+        commands.update_timer_label(timer_label)
 
         for btn in buttons.values():
             btn.config(state='normal')
@@ -81,7 +81,7 @@ def run_countdown(seconds_left, timer_label, buttons, app):
 def start_timer(app, timer_label, buttons):
     global timer_seconds
     
-    time_str = format_time(timer_seconds)
+    time_str = commands.format_time(timer_seconds)
     
     if timer_seconds <= 0:
         messagebox.showinfo('Start Timer', "Your timer is 00:00:00. Complete tasks to add time.") 
@@ -121,7 +121,7 @@ controls_frame = tk.Frame(app)
 controls_frame.grid(row=1, column=0, columnspan=4, padx=10, pady=4, sticky='ew')
 
 timer_label = tk.Label(app, font=('Arial', 14, 'bold'))
-update_timer_label(timer_label) 
+commands.update_timer_label(timer_label) 
 timer_label.grid(row=2, column=0, columnspan=4, padx=10, pady=8, sticky='n')
 
 add_btn = tk.Button(controls_frame, text='Add Task', width=14, command=lambda: add_task(app, tasks_listbox))
