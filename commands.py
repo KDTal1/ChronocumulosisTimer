@@ -1,4 +1,4 @@
-import json, mainProcess
+import json, jingle
 from typing import List
 from tkinter import messagebox
 
@@ -58,6 +58,7 @@ def run_countdown(seconds_left, timer_label, buttons, app): # It runs the countd
     timer_label.config(text=f'Time left: {time_str}')  # For every second, this updates the label.
     
     if seconds_left <= 0: # Once the timer is finished, they show this notification to the user.
+        jingle.playTune()
         messagebox.showinfo('Timer', 'Timer finished. Returning to menu.')
         timer_seconds = 0
         update_timer_label(timer_label)

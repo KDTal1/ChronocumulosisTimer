@@ -1,10 +1,9 @@
-"Accumulation Timer 1.2"
+"Accumulation Timer 1.2.1"
 
 '''
-Version 1.2
+Version 1.2.1
 
-Moved different functions to mainProcess.py, and commands.py
-Added comments to mainProcess.py and commands.py
+Added Jingle
 
 egg.
 
