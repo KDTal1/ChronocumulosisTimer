@@ -1,4 +1,4 @@
-# Accumulation Timer
+# Accumulation To-Do List Timer
 VERSION: 1.3
 
 Ever desired in being a productive person, but still wanted a break from time to time?
