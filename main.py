@@ -53,8 +53,8 @@ add_btn = Button(controls_frame, text='Add Task', width=btnWidth, command=lambda
 complete_btn = Button(controls_frame, text='Mark Complete', width=btnWidth, command=lambda: mainProcess.complete_task(tasks_listbox, timer_label, tasks), font=font_for_btn, bg=button_color)
 start_btn = Button(controls_frame, text='Start Timer', width=btnWidth, command=lambda: commands.start_timer(app, timer_label, buttons), font=font_for_btn, bg=button_color)
 clear_btn = Button(controls_frame, text='Clear All', width=btnWidth, command=lambda: mainProcess.clear_tasks(tasks_listbox, tasks), font=font_for_btn, bg=button_color)
-about_btn = Button(controls_frame, text='About', width=btnWidth, command=commands.about, font=font_for_btn, bg=button_color)
-change_time = Button(controls_frame, text='Change Minutes', width=btnWidth, command=lambda: mainProcess.change_time_json(app), font=font_for_btn, bg=about_color)
+about_btn = Button(controls_frame, text='About', width=btnWidth, command=commands.about, font=font_for_btn, bg=about_color)
+change_time = Button(controls_frame, text='Change Minutes', width=btnWidth, command=lambda: mainProcess.change_time_json(app), font=font_for_btn, bg=button_color)
 
 buttons = {
     'add': add_btn,
