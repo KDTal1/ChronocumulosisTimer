@@ -17,6 +17,18 @@ def add_task(app, tasks_listbox, tasks):
     commands._write_tasks(tasks)
     populate_tasks_listbox(tasks_listbox, tasks)
 
+def change_time_json(app):
+    seconds = simpledialog.askinteger('CHange Time', "Switch your minutes from 1-5:", parent=app)
+    if not seconds:
+        return
+    
+    if seconds > 5:
+        messagebox.showwarning("Error", "Sorry, not allowing that.\n\nYou are only allowed 1-5 minutes for each task.")
+        return
+    
+    commands.change_time_thru_json_file(seconds)
+    commands.check_time()
+
 def complete_task(tasks_listbox, timer_label, tasks):
     checked_indices = tasks_listbox.curselection() # User can select how many tasks they completed.
     
@@ -29,7 +41,7 @@ def complete_task(tasks_listbox, timer_label, tasks):
         tasks.pop(i) # Completed task is done, now you just remove them.
     
     num_completed = len(indices_to_remove) # The amount of tasks that are completed
-    time_added_seconds = commands.TIME_PER_TASK_SECONDS * num_completed # The amount of tasks converted into minutes for the timer (Currently in seconds.)
+    time_added_seconds = commands.timeLimit * num_completed # The amount of tasks converted into minutes for the timer (Currently in seconds.)
     time_added_minutes = time_added_seconds // 60 # The seconds became minutes
     commands.timer_seconds += time_added_seconds # The minutes are stored in the timer_seconds, it can be shoved there. Nothing more.
     

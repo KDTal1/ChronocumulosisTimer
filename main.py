@@ -1,9 +1,8 @@
-"Accumulation Timer 1.2.1"
+"Accumulation Timer 1.2.2"
 
 '''
-Version 1.2.1
-
-Added Jingle
+Version 1.2.2
+Added task minute configurations
 
 egg.
 
@@ -12,12 +11,15 @@ egg.
 from tkinter import *
 import commands, mainProcess
 
+commands.load_time_thru_json_file()
+commands.check_time()
+
 countdown_job = None
 tasks = commands._read_tasks()
 
 app = Tk()
-app.title('Accumulation Timer - made by KDTal1')
-app.geometry('615x350')
+app.title('Accumulation Timer')
+app.geometry('330x350')
 app.resizable(False, False)
 
 tasks_frame = Frame(app, bd=2, relief=GROOVE)
@@ -41,26 +43,29 @@ timer_label = Label(app, font=('Arial', 14, 'bold'))
 commands.update_timer_label(timer_label) 
 timer_label.grid(row=2, column=0, columnspan=4, padx=10, pady=8, sticky='n')
 
-add_btn = Button(controls_frame, text='Add Task', width=14, command=lambda: mainProcess.add_task(app, tasks_listbox, tasks))
-complete_btn = Button(controls_frame, text='Mark Complete', width=14, command=lambda: mainProcess.complete_task(tasks_listbox, timer_label, tasks))
-start_btn = Button(controls_frame, text='Start Timer', width=14, command=lambda: commands.start_timer(app, timer_label, buttons))
-clear_btn = Button(controls_frame, text='Clear All', width=14, command=lambda: mainProcess.clear_tasks(tasks_listbox, tasks))
-about_btn = Button(controls_frame, text='About', width=14, command=commands.about)
+add_btn = Button(controls_frame, text='Add Task', width=12, command=lambda: mainProcess.add_task(app, tasks_listbox, tasks))
+complete_btn = Button(controls_frame, text='Mark Complete', width=12, command=lambda: mainProcess.complete_task(tasks_listbox, timer_label, tasks))
+start_btn = Button(controls_frame, text='Start Timer', width=12, command=lambda: commands.start_timer(app, timer_label, buttons))
+clear_btn = Button(controls_frame, text='Clear All', width=12, command=lambda: mainProcess.clear_tasks(tasks_listbox, tasks))
+about_btn = Button(controls_frame, text='About', width=12, command=commands.about)
+change_time = Button(controls_frame, text='Change Minutes', width=12, command=lambda: mainProcess.change_time_json(app))
 
 buttons = {
     'add': add_btn,
     'complete': complete_btn,
     'start': start_btn,
-    'clear': clear_btn
+    'clear': clear_btn,
+    'timin': change_time
 }
 
-for btnPack, colNum in [
-    (add_btn, 0),
-    (complete_btn, 1),
-    (start_btn, 2),
-    (clear_btn, 3),
-    (about_btn, 4)
+for btnPack, colNum, rowNum in [
+    (add_btn, 0, 0),
+    (complete_btn, 1, 0),
+    (start_btn, 2, 0),
+    (clear_btn, 0, 1),
+    (about_btn, 1, 1),
+    (change_time, 2, 1)
 ]:
-    btnPack.grid(row=0, column=colNum, padx=5, pady=4, sticky='n')
+    btnPack.grid(row=rowNum, column=colNum, padx=5, pady=4)
 
 app.mainloop()

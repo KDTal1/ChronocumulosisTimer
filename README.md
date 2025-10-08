@@ -1,5 +1,5 @@
 # Accumulation Timer
-VERSION: 1.2.1
+VERSION: 1.2.2
 
 Have you ever wanted a timer that adds up for every task you complete?
 Here you go. Have fun, and keep yourself worked with the sake of reward. :3

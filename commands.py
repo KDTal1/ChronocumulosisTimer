@@ -5,7 +5,8 @@ from tkinter import messagebox
 DATA_FILE = 'data.json'
 tasks: List[str] = []
 timer_seconds = 0
-TIME_PER_TASK_SECONDS = 120
+TIME_FILE = 'time.json'
+timeLimit = 0
 
 def _read_tasks() -> List[str]:
     try:
@@ -37,7 +38,39 @@ def _write_tasks(tasks_list: List[str]): # We add a new task to the data.json fi
         with open(DATA_FILE, 'w') as f: # data.json will be ripped out again.
             json.dump(tasks_list, f, ensure_ascii=False, indent=2)
     except Exception as e:
-        print(f"Failed to save tasks: {e}")
+        print(f"CONSOLE: Failed to save tasks: {e}")
+
+def load_time_thru_json_file(): # We make it so that the time.json file is running
+    global timeLimit
+    try:
+        with open(TIME_FILE, 'r') as f: # Program checks if the file is there, so that whatever configuration user has for the timer set can push through
+            raw = json.load(f)
+            timeLimit = raw
+        print(f"CONSOLE: TIME FILE found, now changing.")
+    except FileNotFoundError: # Happens when there's no file, so program has to create for user to modify in the meantime. Default is set to 2 minutes
+        with open(TIME_FILE, 'w') as f:
+            json.dump(120, f)
+            
+        with open(TIME_FILE, 'r') as f: # Runs it like normal.
+            raw = json.load(f)
+            timeLimit = raw
+        
+        print(f"CONSOLE: TIME FILE not found, making file now.")
+
+def check_time():
+    print(f"CONSOLE: Current time_file seconds amounted up to {timeLimit}")
+
+def change_time_thru_json_file(seconds): # Deliberately tampers the file to accompany the amount of seconds it is loading.
+        global timeLimit
+
+        with open(TIME_FILE, 'w') as f:
+            json.dump(seconds*60, f)
+
+        with open(TIME_FILE, 'r') as f:
+            raw = json.load(f)
+            timeLimit = raw
+        
+        check_time()
 
 def format_time(total_seconds: int) -> str:
     hours = total_seconds // 3600 # We turn the total_seconds into hours
