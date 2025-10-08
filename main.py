@@ -1,8 +1,9 @@
-"Accumulation Timer 1.2.2"
+"Accumulation Timer 1.3"
 
 '''
-Version 1.2.2
-Added task minute configurations
+Version 1.3
+
+Decoration, and optimizations.
 
 egg.
 
@@ -14,12 +15,15 @@ import commands, mainProcess
 commands.load_time_thru_json_file()
 commands.check_time()
 
+btnWidth = 12
+font_for_btn = ("Helvetica", 12)
+
 countdown_job = None
 tasks = commands._read_tasks()
 
 app = Tk()
-app.title('Accumulation Timer')
-app.geometry('330x350')
+app.title('Accumulation Timer 1.3 - Made by KDTal1')
+app.geometry('405x350')
 app.resizable(False, False)
 
 tasks_frame = Frame(app, bd=2, relief=GROOVE)
@@ -43,12 +47,12 @@ timer_label = Label(app, font=('Arial', 14, 'bold'))
 commands.update_timer_label(timer_label) 
 timer_label.grid(row=2, column=0, columnspan=4, padx=10, pady=8, sticky='n')
 
-add_btn = Button(controls_frame, text='Add Task', width=12, command=lambda: mainProcess.add_task(app, tasks_listbox, tasks))
-complete_btn = Button(controls_frame, text='Mark Complete', width=12, command=lambda: mainProcess.complete_task(tasks_listbox, timer_label, tasks))
-start_btn = Button(controls_frame, text='Start Timer', width=12, command=lambda: commands.start_timer(app, timer_label, buttons))
-clear_btn = Button(controls_frame, text='Clear All', width=12, command=lambda: mainProcess.clear_tasks(tasks_listbox, tasks))
-about_btn = Button(controls_frame, text='About', width=12, command=commands.about)
-change_time = Button(controls_frame, text='Change Minutes', width=12, command=lambda: mainProcess.change_time_json(app))
+add_btn = Button(controls_frame, text='Add Task', width=btnWidth, command=lambda: mainProcess.add_task(app, tasks_listbox, tasks), font=font_for_btn)
+complete_btn = Button(controls_frame, text='Mark Complete', width=btnWidth, command=lambda: mainProcess.complete_task(tasks_listbox, timer_label, tasks), font=font_for_btn)
+start_btn = Button(controls_frame, text='Start Timer', width=btnWidth, command=lambda: commands.start_timer(app, timer_label, buttons), font=font_for_btn)
+clear_btn = Button(controls_frame, text='Clear All', width=btnWidth, command=lambda: mainProcess.clear_tasks(tasks_listbox, tasks), font=font_for_btn)
+about_btn = Button(controls_frame, text='About', width=btnWidth, command=commands.about, font=font_for_btn)
+change_time = Button(controls_frame, text='Change Minutes', width=btnWidth, command=lambda: mainProcess.change_time_json(app), font=font_for_btn)
 
 buttons = {
     'add': add_btn,

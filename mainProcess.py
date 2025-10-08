@@ -59,7 +59,7 @@ def clear_tasks(tasks_listbox, tasks): # User doesn't want the tasks, so we're s
         return
         
     if messagebox.askyesno('Clear All Tasks', 'Are you sure you want to clear ALL tasks?'): # We give the user an ultimatum first, if they are merciful
-        tasks = []
+        tasks.clear()
         commands._write_tasks(tasks)
         populate_tasks_listbox(tasks_listbox, tasks)
         messagebox.showinfo('Clear Tasks', 'All tasks have been cleared.')

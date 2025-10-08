@@ -120,4 +120,4 @@ def start_timer(app, timer_label, buttons): # We force the program to start the 
     run_countdown(timer_seconds, timer_label, buttons, app)
 
 def about():
-    messagebox.showinfo("Info", "This is made by KdTal1, an ambitious project.")
+    messagebox.showinfo("Info", "This is made by KDTal1, an ambitious project.")

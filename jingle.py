@@ -28,11 +28,11 @@ def play_tone(note, duration=0.5, volume=0.2):
 def play_custom_tune():
     notes = ["G#4", "A#4", "C#5", "A#4"]
     for n in notes:
-        play_tone(n, 0.05)  # each 0.6s
+        play_tone(n, 0.15)  # each 0.6s
 
     notes2 = ["F5", "F5", "D#5"]
     for n2 in notes2:
-        play_tone(n2, 0.3)
+        play_tone(n2, 0.4)
 
 def playTune():
     thread1 = threading.Thread(target=play_custom_tune)
