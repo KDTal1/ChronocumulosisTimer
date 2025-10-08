@@ -16,6 +16,8 @@ commands.load_time_thru_json_file()
 commands.check_time()
 
 btnWidth = 12
+button_color = "#E67892"
+about_color = "#7FCF66"
 font_for_btn = ("Helvetica", 12)
 
 countdown_job = None
@@ -47,12 +49,12 @@ timer_label = Label(app, font=('Arial', 14, 'bold'))
 commands.update_timer_label(timer_label) 
 timer_label.grid(row=2, column=0, columnspan=4, padx=10, pady=8, sticky='n')
 
-add_btn = Button(controls_frame, text='Add Task', width=btnWidth, command=lambda: mainProcess.add_task(app, tasks_listbox, tasks), font=font_for_btn)
-complete_btn = Button(controls_frame, text='Mark Complete', width=btnWidth, command=lambda: mainProcess.complete_task(tasks_listbox, timer_label, tasks), font=font_for_btn)
-start_btn = Button(controls_frame, text='Start Timer', width=btnWidth, command=lambda: commands.start_timer(app, timer_label, buttons), font=font_for_btn)
-clear_btn = Button(controls_frame, text='Clear All', width=btnWidth, command=lambda: mainProcess.clear_tasks(tasks_listbox, tasks), font=font_for_btn)
-about_btn = Button(controls_frame, text='About', width=btnWidth, command=commands.about, font=font_for_btn)
-change_time = Button(controls_frame, text='Change Minutes', width=btnWidth, command=lambda: mainProcess.change_time_json(app), font=font_for_btn)
+add_btn = Button(controls_frame, text='Add Task', width=btnWidth, command=lambda: mainProcess.add_task(app, tasks_listbox, tasks), font=font_for_btn, bg=button_color)
+complete_btn = Button(controls_frame, text='Mark Complete', width=btnWidth, command=lambda: mainProcess.complete_task(tasks_listbox, timer_label, tasks), font=font_for_btn, bg=button_color)
+start_btn = Button(controls_frame, text='Start Timer', width=btnWidth, command=lambda: commands.start_timer(app, timer_label, buttons), font=font_for_btn, bg=button_color)
+clear_btn = Button(controls_frame, text='Clear All', width=btnWidth, command=lambda: mainProcess.clear_tasks(tasks_listbox, tasks), font=font_for_btn, bg=button_color)
+about_btn = Button(controls_frame, text='About', width=btnWidth, command=commands.about, font=font_for_btn, bg=button_color)
+change_time = Button(controls_frame, text='Change Minutes', width=btnWidth, command=lambda: mainProcess.change_time_json(app), font=font_for_btn, bg=about_color)
 
 buttons = {
     'add': add_btn,
