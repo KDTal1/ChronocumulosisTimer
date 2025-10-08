@@ -24,7 +24,7 @@ countdown_job = None
 tasks = commands._read_tasks()
 
 app = Tk()
-app.title('Accumulation Timer 1.3 - Made by KDTal1')
+app.title('Accumulation To-Do List Timer 1.3 - Made by KDTal1')
 app.geometry('405x350')
 app.resizable(False, False)
 
