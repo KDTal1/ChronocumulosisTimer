@@ -57,5 +57,3 @@ def play_custom_tune():
 def playTune():
     thread1 = threading.Thread(target=play_custom_tune)
     thread1.start()
-
-playTune()

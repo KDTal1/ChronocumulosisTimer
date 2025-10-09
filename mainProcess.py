@@ -29,6 +29,18 @@ def change_time_json(app, labelTaskMin):
     commands.change_time_thru_json_file(seconds)
     update_limit_tasks(labelTaskMin)
 
+def remove_tasks(tasks_listbox, tasks): # mini version of the complete tasks
+    checked_indices = tasks_listbox.curselection()
+    if not checked_indices:
+        messagebox.showinfo("Remove Task", "PLease select at least one task to remove.")
+        return
+    
+    indices_to_remove = sorted(list(checked_indices), reverse=True)
+    for i in indices_to_remove:
+        tasks.pop(i)
+        commands._write_tasks(tasks)
+        populate_tasks_listbox(tasks_listbox, tasks)
+
 def complete_task(tasks_listbox, timer_label, tasks, history, app):
     checked_indices = tasks_listbox.curselection() # User can select how many tasks they completed.
     if not checked_indices:
@@ -66,11 +78,22 @@ def update_limit_tasks(labelTaskMin): # This is to accomodate the fact that the 
 
 def clear_tasks(tasks_listbox, tasks): # User doesn't want the tasks, so we're shoving it in the trash can.
     if not tasks: # This happens if tasks are empty
-        messagebox.showinfo('Clear Tasks', 'The task list is already empty.')
+        messagebox.showinfo('Clear All', 'The list is already empty.')
         return
         
-    if messagebox.askyesno('Clear All Tasks', 'Are you sure you want to clear ALL tasks?'): # We give the user an ultimatum first, if they are merciful
+    if messagebox.askyesno('Clear All', 'Are you sure you want to clear everything?'): # We give the user an ultimatum first, if they are merciful
         tasks.clear()
         commands._write_tasks(tasks)
         populate_tasks_listbox(tasks_listbox, tasks)
         messagebox.showinfo('Clear Tasks', 'All tasks have been cleared.')
+
+def clear_history(history_listbox, history): # User doesn't want the tasks, so we're shoving it in the trash can.
+    if not history: # This happens if tasks are empty
+        messagebox.showinfo('Clear All', 'The list is already empty.')
+        return
+        
+    if messagebox.askyesno('Clear All', 'Are you sure you want to clear everything?'): # We give the user an ultimatum first, if they are merciful
+        history.clear()
+        commands._write_history(history)
+        populate_tasks_listbox(history_listbox, history)
+        messagebox.showinfo('Clear Tasks', 'All events of history have been cleared.')

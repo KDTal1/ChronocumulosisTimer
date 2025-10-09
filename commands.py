@@ -10,6 +10,7 @@ tasks: List[str] = []
 timer_seconds = 0
 timeLimit = 0
 
+# TO READ TASKS
 def _read_tasks() -> List[str]:
     try:
         with open(DATA_FILE, 'r') as f: # data.json will be ripped out.
@@ -41,6 +42,7 @@ def _write_tasks(tasks_list: List[str]): # We add a new task to the data.json fi
             json.dump(tasks_list, f, ensure_ascii=False, indent=2)
     except Exception as e:
         print(f"CONSOLE: Failed to save tasks: {e}")
+# TO READ TASKS
 
 # TO READ HISTORY FILE
 def _read_history() -> List[str]:
@@ -142,6 +144,7 @@ def add_timer_seconds():
         json.dump(timer_seconds, f)
 # TO READ TIMER SECONDS
 
+# TIMER RELATED COMMANDS
 def format_time(total_seconds: int) -> str:
     hours = total_seconds // 3600 # We turn the total_seconds into hours
     remaining_seconds = total_seconds % 3600 # We give the remaining seconds from the hours made to the seconds
@@ -158,6 +161,11 @@ def update_timer_label(timer_label): # This is to accomodate the fact that the t
 
 def reset_timer(timer_label):
     global timer_seconds
+
+    if not timer_seconds:
+        messagebox.showinfo("Reset Timer", "Timer already has reset")
+        return
+    
     reset_timer_seconds()
     time_str = format_time(timer_seconds)
     timer_label.config(text=f'Time Total: {time_str}')
@@ -199,6 +207,9 @@ def start_timer(app, timer_label, buttons): # We force the program to start the 
         btn.config(state='disabled') # To ensure every button isn't spammed by the user, 
         
     run_countdown(timer_seconds, timer_label, buttons, app)
+# TIMER RELATED COMMANDS
 
+# ABOUT
 def about():
     messagebox.showinfo("Info", "This is made by KDTal1, an ambitious project.")
+# ABOUT

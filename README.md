@@ -1,5 +1,5 @@
 # Accumulation To-Do List Timer
-VERSION: 1.4.1
+VERSION: 1.5
 
 Ever desired in being a productive person, but still wanted a break from time to time?
 
@@ -11,20 +11,16 @@ That once you are finished with everything, you can finally press the timer and 
 
 Productivity, with a hint of reward.
 
-Updates:
-- Label to see how many minutes you can gain per task
-- Increased change minutes from 5 mins to 15 mins
-- You can now pause your timer when you leave.
-- Reset timer button
-- History log, Complete Tasks now has accountability feature.
-
 Features:
 - Accumulation Timer
 - Add Tasks
 - Complete Tasks
 - Clear Tasks
-- Jingle made for finished timer
+- Jingle sound once timer is complete
 - Temporary History log window, lasts for 10 seconds.
+- Task to mins conversion table
+- Reset timer button
+- Change minutes
 
 Dependencies to install
 - PyGame
