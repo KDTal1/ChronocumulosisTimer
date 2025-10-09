@@ -30,10 +30,32 @@ def play_custom_tune():
     for n in notes:
         play_tone(n, 0.15)  # each 0.6s
 
-    notes2 = ["F5", "F5", "D#5"]
+    notes2 = ["F5", "F5"]
     for n2 in notes2:
         play_tone(n2, 0.4)
+
+    notes2b = ["D#5"]
+    for n2b in notes2b:
+        play_tone(n2b, 0.8)
+
+    notes3 = ["G#4", "A#4", "C#5", "A#4"]
+    for n3 in notes3:
+        play_tone(n3, 0.15)  # each 0.6s
+
+    notes4 = ["D#5", "D#5"]
+    for n4 in notes4:
+        play_tone(n4, 0.4)
+
+    notes4b = ["C#5"]
+    for n4b in notes4b:
+        play_tone(n4b, 0.6)
+
+    notes5 = ["C5", "A#4"]
+    for n5 in notes5:
+        play_tone(n5, 0.15)
 
 def playTune():
     thread1 = threading.Thread(target=play_custom_tune)
     thread1.start()
+
+playTune()

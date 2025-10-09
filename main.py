@@ -1,13 +1,9 @@
-"Accumulation Timer 1.3"
+"Accumulation Timer 1.4.1"
 
 '''
 Version 1.4
 
-- Label to see how many minutes you can gain per task
-- Increased change minutes from 5 mins to 15 mins
-- You can now pause your timer when you leave.
-- Reset timer button
-- History log, Complete Tasks now has accountability feature.
+- Task to Mins conversion fixed.
 
 egg.
 
@@ -20,7 +16,6 @@ import commands, mainProcess
 
 commands.load_time_thru_json_file()
 commands.load_time_seconds()
-commands.check_time()
 
 def showHistoryLog(history): # Only appears for 10 seconds.
     top = Toplevel()
@@ -84,7 +79,7 @@ complete_btn = Button(controls_frame, text='Mark Complete', width=btnWidth, comm
 start_btn = Button(controls_frame, text='Start Timer', width=btnWidth, command=lambda: commands.start_timer(app, timer_label, buttons), font=font_for_btn, bg=button_color)
 clear_btn = Button(controls_frame, text='Clear All', width=btnWidth, command=lambda: mainProcess.clear_tasks(tasks_listbox, tasks), font=font_for_btn, bg=button_color)
 about_btn = Button(controls_frame, text='About', width=btnWidth, command=commands.about, font=font_for_btn, bg=about_color)
-change_time = Button(controls_frame, text='Change Minutes', width=btnWidth, command=lambda: mainProcess.change_time_json(app), font=font_for_btn, bg=button_color)
+change_time = Button(controls_frame, text='Change Minutes', width=btnWidth, command=lambda: mainProcess.change_time_json(app, labelTaskMin), font=font_for_btn, bg=button_color)
 history_btn = Button(controls_frame, text="History Log", width=btnWidth, command=lambda: showHistoryLog(history), font=font_for_btn, bg=button_color)
 reset_btn = Button(controls_frame, text="Reset Timer", width=btnWidth, command=lambda: commands.reset_timer(timer_label), font=font_for_btn, bg=button_color)
 

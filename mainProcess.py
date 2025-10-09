@@ -17,17 +17,17 @@ def add_task(app, tasks_listbox, tasks):
     commands._write_tasks(tasks)
     populate_tasks_listbox(tasks_listbox, tasks)
 
-def change_time_json(app):
-    seconds = simpledialog.askinteger('CHange Time', "Switch your minutes from 1-15:", parent=app)
+def change_time_json(app, labelTaskMin):
+    seconds = simpledialog.askinteger('Change Time', "Switch your minutes from 1-15:", parent=app) # User can choose how many minutes they want to gain from every task completion.
     if not seconds:
         return
     
     if seconds > 15:
-        messagebox.showwarning("Error", "Sorry, not allowing that.\n\nYou are only allowed 1-15 minutes for each task.")
+        messagebox.showwarning("Error", "Sorry, not allowing that.\n\nYou are only allowed 1-15 minutes for each task.") # If user eats off more than they can chew.
         return
     
     commands.change_time_thru_json_file(seconds)
-    commands.check_time()
+    update_limit_tasks(labelTaskMin)
 
 def complete_task(tasks_listbox, timer_label, tasks, history, app):
     checked_indices = tasks_listbox.curselection() # User can select how many tasks they completed.
@@ -42,7 +42,7 @@ def complete_task(tasks_listbox, timer_label, tasks, history, app):
     
     indices_to_remove = sorted(list(checked_indices), reverse=True)
     for i in indices_to_remove:
-        history.append(f"Task: {tasks[i]}, finished by {name}")
+        history.append(f"Task: {tasks[i]}, finished by {name}, added {commands.timeLimit // 60} minutes.")
         commands._write_history(history)
 
     for i in indices_to_remove:

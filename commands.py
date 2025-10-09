@@ -1,4 +1,3 @@
-from email.errors import MessageError
 import json, jingle
 from typing import List
 from tkinter import messagebox
@@ -95,9 +94,6 @@ def load_time_thru_json_file(): # We make it so that the time.json file is runni
         
         print(f"CONSOLE: TIME FILE not found, making file now.")
 
-def check_time():
-    print(f"CONSOLE: Current time_file seconds amounted up to {timeLimit}")
-
 def change_time_thru_json_file(seconds): # Deliberately tampers the file to accompany the amount of seconds it is loading.
         global timeLimit
 
@@ -108,7 +104,7 @@ def change_time_thru_json_file(seconds): # Deliberately tampers the file to acco
             raw = json.load(f)
             timeLimit = raw
         
-        check_time()
+        print(f"CONSOLE: Changed time limit.")
 # TO READ TIME FILE
 
 # TO READ TIMER SECONDS
@@ -127,7 +123,7 @@ def load_time_seconds(): # We make it so that the timerseconds.json file is runn
             raw = json.load(f)
             timer_seconds = raw
 
-        print(f"CONSOLE: TIME FILE not found, making file now.")
+        print(f"CONSOLE: TIMERSOUNDS FILE not found, making file now.")
 
 def reset_timer_seconds(): # Deliberately tampers the file to accompany the amount of seconds it is loading.
         global timer_seconds
