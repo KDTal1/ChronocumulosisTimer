@@ -1,10 +1,9 @@
-"Accumulation Timer 1.5"
+"Accumulation Timer 1.5.1"
 
 '''
-Version 1.5
+Version 1.5.1
 
-- Included option to remove history log
-- Remove button
+- added praise messages
 
 '''
 
@@ -14,6 +13,7 @@ import commands, mainProcess
 
 commands.load_time_thru_json_file()
 commands.load_time_seconds()
+commands.jsonTurned_variable()
 
 def showHistoryLog(history): # Only appears for 10 seconds.
     top = Toplevel()
@@ -83,7 +83,7 @@ labelTaskMin.grid(row=0, column=1, padx=5, pady=5)
 
 
 add_btn = Button(controls_frame, text='Add Task', width=btnWidth, command=lambda: mainProcess.add_task(app, tasks_listbox, tasks), font=font_for_btn, bg=red_color)
-complete_btn = Button(controls_frame, text='Mark Complete', width=btnWidth, command=lambda: mainProcess.complete_task(tasks_listbox, timer_label, tasks, history, app), font=font_for_btn, bg=green_color)
+complete_btn = Button(controls_frame, text='Mark Complete', width=btnWidth, command=lambda: mainProcess.complete_task(tasks_listbox, timer_label, tasks, history, app, commands.praise_messages), font=font_for_btn, bg=green_color)
 start_btn = Button(controls_frame, text='Start Timer', width=btnWidth, command=lambda: commands.start_timer(app, timer_label, buttons), font=font_for_btn, bg="powder blue")
 clear_btn = Button(controls_frame, text='Clear All', width=btnWidth, command=lambda: mainProcess.clear_tasks(tasks_listbox, tasks), font=font_for_btn, bg=red_color)
 about_btn = Button(controls_frame, text='About', width=btnWidth, command=commands.about, font=font_for_btn, bg=green_color)

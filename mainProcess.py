@@ -1,6 +1,6 @@
 from tkinter import simpledialog, messagebox
 from tkinter import *
-import commands
+import commands, random
 
 def populate_tasks_listbox(tasks_listbox, tasks):
     tasks_listbox.delete(0, END)
@@ -41,7 +41,7 @@ def remove_tasks(tasks_listbox, tasks): # mini version of the complete tasks
         commands._write_tasks(tasks)
         populate_tasks_listbox(tasks_listbox, tasks)
 
-def complete_task(tasks_listbox, timer_label, tasks, history, app):
+def complete_task(tasks_listbox, timer_label, tasks, history, app, praise_messages):
     checked_indices = tasks_listbox.curselection() # User can select how many tasks they completed.
     if not checked_indices:
         messagebox.showinfo('Complete Task', 'Please select at least one task to complete') # User may click the button, but if they don't have any tasks, this will show up.
@@ -69,7 +69,7 @@ def complete_task(tasks_listbox, timer_label, tasks, history, app):
     populate_tasks_listbox(tasks_listbox, tasks)
     commands.update_timer_label(timer_label)
     
-    messagebox.showinfo('Complete Task', f"Marked {num_completed} task(s) as complete. +{time_added_minutes} minute(s) to timer")
+    messagebox.showinfo('Complete Task', f"Marked {num_completed} task(s) as complete. +{time_added_minutes} minute(s) to timer\n\n{praise_messages[random.randint(0, 14)]}")
     # num_completed - The amount of tasks completed by user
     # time_added_minutes - The converted version of time_added_seconds for user to comprehend how many minutes they accumulated.
 

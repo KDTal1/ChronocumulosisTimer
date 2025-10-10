@@ -6,6 +6,7 @@ DATA_FILE = 'data.json'
 TIME_FILE = 'time.json'
 HISTORY_FILE = 'history.json'
 TIMERSECONDS = 'timerseconds.json'
+praise_messages = 'praise_messages.json'
 tasks: List[str] = []
 timer_seconds = 0
 timeLimit = 0
@@ -213,3 +214,14 @@ def start_timer(app, timer_label, buttons): # We force the program to start the 
 def about():
     messagebox.showinfo("Info", "This is made by KDTal1, an ambitious project.")
 # ABOUT
+
+#json turned variable
+def jsonTurned_variable(): # Plug error_messaegs.json into the error_message variable.
+    global praise_messages
+    try:
+        with open(praise_messages, 'r') as f:
+            praise_messages = json.load(f)
+        print("CONSOLE: praise_messages.json found.")
+    except Exception as e:
+        print("CONSOLE: Error, cannot grab file.")
+#json turned variable

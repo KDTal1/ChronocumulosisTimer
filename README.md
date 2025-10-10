@@ -21,6 +21,7 @@ Features:
 - Task to mins conversion table
 - Reset timer button
 - Change minutes
+- Praise messages
 
 Dependencies to install
 - PyGame
