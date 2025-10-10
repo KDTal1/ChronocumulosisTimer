@@ -18,12 +18,12 @@ def add_task(app, tasks_listbox, tasks):
     populate_tasks_listbox(tasks_listbox, tasks)
 
 def change_time_json(app, labelTaskMin):
-    seconds = simpledialog.askinteger('Change Time', "Switch your minutes from 1-15:", parent=app) # User can choose how many minutes they want to gain from every task completion.
+    seconds = simpledialog.askinteger('Change Time', "Switch your minutes from 1-30:", parent=app) # User can choose how many minutes they want to gain from every task completion.
     if not seconds:
         return
     
-    if seconds > 15:
-        messagebox.showwarning("Error", "Sorry, not allowing that.\n\nYou are only allowed 1-15 minutes for each task.") # If user eats off more than they can chew.
+    if seconds > 30:
+        messagebox.showwarning("Error", "Sorry, not allowing that.\n\nYou are only allowed 1-30 minutes for each task.") # If user eats off more than they can chew.
         return
     
     commands.change_time_thru_json_file(seconds)
