@@ -1,5 +1,5 @@
 # Accumulation To-Do List Timer
-VERSION: 1.5
+VERSION: 1.5.1
 
 Ever desired in being a productive person, but still wanted a break from time to time?
 
