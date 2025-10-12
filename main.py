@@ -48,7 +48,7 @@ tasks = commands._read_tasks()
 history = commands._read_history()
 
 app = Tk()
-app.title('Accumulation To-Do List Timer 1.5')
+app.title('Accumulation To-Do List Timer 1.5.1')
 app.geometry('405x380')
 app.resizable(False, False)
 
