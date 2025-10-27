@@ -2,11 +2,11 @@ import json, jingle
 from typing import List
 from tkinter import messagebox
 
-DATA_FILE = 'data.json'
-TIME_FILE = 'time.json'
-HISTORY_FILE = 'history.json'
-TIMERSECONDS = 'timerseconds.json'
-praise_messages = 'praise_messages.json'
+DATA_FILE = 'json/data.json'
+TIME_FILE = 'json/time.json'
+HISTORY_FILE = 'json/history.json'
+TIMERSECONDS = 'json/timerseconds.json'
+praise_messages = 'json/praise_messages.json'
 tasks: List[str] = []
 timer_seconds = 0
 timeLimit = 0
