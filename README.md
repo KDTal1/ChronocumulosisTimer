@@ -52,4 +52,3 @@ pip install -r requirements.txt
 
 ## Acknowledgements
 *   This project was created by **KDTal1**.
-*   Installer of the Project will come out soon.
